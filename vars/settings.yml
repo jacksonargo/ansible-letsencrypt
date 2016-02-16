@@ -1,0 +1,16 @@
+# List of domains you want certificates for.
+---
+# Add apache configuration
+apache: true
+# Add nginx configuration
+nginx: false
+# Add varnish configuration
+varnish: false
+# Domains to make certs for
+domains:
+ example.com:
+  - example.com
+  - www.example.com
+ myotherdomain.com:
+  - myotherdomain.com
+  - www.myotherdomain.com

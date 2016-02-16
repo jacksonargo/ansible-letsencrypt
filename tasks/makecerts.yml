@@ -1,0 +1,7 @@
+# Generates the certificates
+---
+- name: Generate the certificates
+  command: /opt/letsencrypt/letsencrypt-auto certonly -c /etc/letsencrypt/{{ item.key }}.ini
+  args:
+    creates: /etc/letsencrypt/live/{{ item.key }}/cert.pem
+  with_dict: "{{ domains }}"

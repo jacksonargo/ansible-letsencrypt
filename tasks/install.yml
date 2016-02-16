@@ -1,0 +1,8 @@
+---
+- name: Install git
+  yum: name=git state=latest
+- name: Install letsencrypt
+  command: git clone https://github.com/letsencrypt/letsencrypt.git
+  args:
+    chdir: /opt/
+    creates: /opt/letsencrypt
