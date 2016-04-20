@@ -1,0 +1,8 @@
+# List of domains you want certificates for.
+---
+domains:
+ - common: mydomain.com
+   alternates:
+   - www.mydomain.com
+   - stage.mydomain.com
+ - common: myotherdomain.com

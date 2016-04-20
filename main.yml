@@ -2,16 +2,7 @@
 - hosts: all
   user: root
   vars_files:
-   - vars/settings.yml
+   - domains.yml
   tasks:
-   - when: ansible_os_family == "RedHat"
-     include_vars: vars/el_vars.yml
-   - when: ansible_os_family == "Debian"
-     include_vars: vars/deb_vars.yml
-   - include: tasks/install.yml
-   - include: tasks/configure.yml
-   - include: tasks/makecerts.yml
-   - when: apache
-     include: tasks/configure_apache_ssl.yml
-   - when: nginx
-     include: tasks/configure_nginx_ssl.yml
+#   - include: tasks/install-letsencrypt.yml
+   - include: tasks/configure-letsencrypt.yml

@@ -1,0 +1,7 @@
+---
+- name: Install git
+  package: name=git state=latest
+- name: Install letsencrypt from github
+  git:
+    repo=https://github.com/letsencrypt/letsencrypt.git
+    dest=/opt/letsencrypt
