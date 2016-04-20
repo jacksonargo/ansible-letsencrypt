@@ -1,7 +1,11 @@
 # ansible-letsencrypt
 
-Install Letsencrypt and automatically generate certificates for domains specified in vars/settings.
+* Installs letsencrypt in /opt/letsencrypt from github
+* Installs cron job to automatically renew domains
+* Creates configuration for each domain that uses webroot auth
 
-Designed to work with the rackspace-orchestration-templates/lamp
+####Coming
 
-Currently works with Centos6 and Centos7
+* Adds apache/nginx permit all rule for /.well-known/acme-challenge/
+* Adds apache/nginx alias for /.well-known/acme-challenge/ to /var/www/letsencrypt-auth/
+* Adds proxy config to varnish/nginx/apache for multi-head setups
