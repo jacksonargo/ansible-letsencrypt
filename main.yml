@@ -4,5 +4,9 @@
   vars_files:
    - domains.yml
   tasks:
-#   - include: tasks/install-letsencrypt.yml
+   - when: ansible_os_family == "RedHat"
+     include_vars: vars/el.yml
+   - when: ansible_os_family == "Debian"
+     include_vars: vars/deb.yml
+   - include: tasks/install-letsencrypt.yml
    - include: tasks/configure-letsencrypt.yml

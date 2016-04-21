@@ -8,9 +8,23 @@
         mode=700
 
 - name: Install certificate configuration
-  template: src=letsencrypt_config.ini.j2
+  template: src=letsencrypt-config.ini.j2
             dest=/etc/letsencrypt/{{ item.common }}.ini
             owner=root
             group=root
             mode=0600
   with_items: "{{ domains }}"
+
+- name: Create the webroot auth directory
+  file: path=/var/www/letsencrypt-auth
+        state=directory
+        owner={{ apache.user }}
+        group={{ apache.user }}
+        mode=700
+
+- name: Add cronjob to renew certificates
+  copy: dest=/etc/cron.d/letsencrypt
+        content="0 0 1 * * root find /etc/letsencrypt/*.ini -exec /opt/letsencrypt/letsencrypt-auto certonly -c {} \;\n"
+        owner=root
+        group=root
+        mode=644

@@ -1,3 +1,0 @@
----
-apache_vhost_path: /etc/httpd/vhost.d
-apache_conf_path: /etc/httpd/conf.d
